@@ -5,6 +5,7 @@ namespace App\Modules\User\DTO;
 class User
 {
     public function __construct(
+        private int $id,
         private string $username,
         private string $email,
         private string $firstName,
@@ -17,6 +18,7 @@ class User
     public static function fromJson(object $data): User
     {
         return new User(
+            $data->id,
             $data->username,
             $data->email,
             $data->firstName,
@@ -24,6 +26,10 @@ class User
             $data->createdAt,
             $data->updatedAt,
         );
+    }
+
+    public function getId(): int {
+        return $this->id;
     }
 
     public function getUsername(): string {
