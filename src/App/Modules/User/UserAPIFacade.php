@@ -20,7 +20,7 @@ class UserAPIFacade
         $response = json_decode($data);
         $statusCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         if ($statusCode != HttpDefaultCodes::SUCCESS || $response == null)
-            throw new \Exception(isset($response["error"]) ? $response["error"] : $response);
+            throw new \Exception(isset($response->message) ? $response->message : $response);
 
         return FindByCredentialsResponse::fromJson($response);
     }
