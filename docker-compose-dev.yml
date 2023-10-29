@@ -4,6 +4,7 @@ version: "3.8"
 networks:
   csproject:
     driver: bridge
+    external: true
 
 #Volumes
 volumes:
@@ -22,6 +23,6 @@ services:
     ports:
       - 8081:80
     volumes:
-      - auth-api-data:/var/www/html
+      - .:/var/www/html
     networks:
       - csproject

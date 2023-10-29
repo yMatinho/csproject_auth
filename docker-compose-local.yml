@@ -1,0 +1,28 @@
+version: "3.8"
+
+#Docker Networks
+networks:
+  csproject:
+    driver: bridge
+    external: true
+
+#Volumes
+volumes:
+  dbdata:
+    driver: local
+  auth-api-data:
+    name: auth-api-data
+
+  # Workflow
+services:
+  auth_api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: auth_api
+    ports:
+      - 8081:80
+    volumes:
+      - auth-api-data:/var/www/html
+    networks:
+      - csproject
