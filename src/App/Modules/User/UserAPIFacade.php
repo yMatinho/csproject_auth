@@ -17,7 +17,7 @@ class UserAPIFacade
 
     public function findByCredentials(string $login, string $password): FindByCredentialsResponse
     {
-        $response = $this->httpRequestFacade->request(HttpMethods::POST, "http://users_api/user/findByCredentials", [
+        $response = $this->httpRequestFacade->request(HttpMethods::POST, USER_SERVICE_URL."user/findByCredentials", [
             "login"=> $login,
             "password"=> $password
         ]);
