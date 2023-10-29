@@ -19,6 +19,11 @@ RUN cd /var/www/html && \
 
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
+RUN apk add --update libzip-dev curl-dev &&\
+    docker-php-ext-install curl && \
+    apk del gcc g++ &&\
+    rm -rf /var/cache/apk/*
+
 RUN chown -R www-data:www-data /var/www
 
 CMD ["sh", "/var/www/html/docker/startup.sh"]

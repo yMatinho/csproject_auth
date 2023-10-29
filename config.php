@@ -2,6 +2,7 @@
 
 define("MAIN_DIR", __DIR__.'/');
 define("SITE_URL", "http://localhost:8081/");
+define("USER_SERVICE_URL", "http://127.0.0.1:8080/");
 
 define("DB_DATABASE", "");
 define("DB_USERNAME", "");

@@ -23,13 +23,16 @@ clean:
 	docker-compose -p csproject_auth down --rmi local --volumes
 
 setup:
+	docker network create csproject
 	docker-compose -p csproject_auth up -d --build
 	docker exec -it api composer install
 
 reset-setup:
+	docker network create csproject
+	docker-compose -p csproject_auth down --rmi local --volumes
 	docker-compose down -v
 	docker-compose -p csproject_auth up -d --build
-	docker exec -it api composer install
+	docker exec -it auth_api composer install
 
 unit-test-local:
 	php ./vendor/bin/phpunit --testsuit Unit
